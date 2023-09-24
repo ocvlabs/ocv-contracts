@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/onchainvision-labs/ocv-contracts.git"
+    "url": "https://github.com/onchainvision-labs/ocv-contracts"
   },
   "keywords": [
     "solidity",
@@ -20,12 +20,12 @@
     "onchain",
     "ethereum"
   ],
-  "author": "onchainvision",
+  "author": "onchainvision-labs",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/onchainvision-labs/ocv-contracts/issues"
   },
-  "homepage": "https://github.com/zoociety/onchainvision-labs#readme",
+  "homepage": "https://github.com/onchainvision-labs/ocv-contracts#readme",
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
