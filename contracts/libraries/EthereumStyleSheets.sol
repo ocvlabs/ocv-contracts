@@ -2,8 +2,52 @@
 pragma solidity ^0.8.9;
 
 import "../interfaces/IVectorGraphics.sol";
+import "@openzeppelin/contracts/utils/Base64.sol";
 
-library VectorGraphics {
+/// @title Ethereum Style Sheets
+library EthereumStyleSheets {
+    function encodeSvg(
+        string memory _params,
+        string memory _content
+    ) external pure returns (string memory) {
+        return
+            string(
+                abi.encodePacked(
+                    "data:image/svg+xml;base64,",
+                    Base64.encode(bytes(svg(_params, _content)))
+                )
+            );
+    }
+
+    function encodeJson(
+        string memory data
+    ) external pure returns (string memory) {
+        return
+            string(
+                abi.encodePacked(
+                    "data:application/json;base64,",
+                    Base64.encode(bytes(data))
+                )
+            );
+    }
+
+    function encodeAnimation(
+        string memory _title,
+        string memory _style,
+        string memory _code,
+        string memory _script
+    ) external pure returns (string memory) {
+        return
+            string(
+                abi.encodePacked(
+                    "data:text/html;base64,",
+                    Base64.encode(
+                        bytes(animation(_title, _style, _code, _script))
+                    )
+                )
+            );
+    }
+
     function animation(
         string memory _title,
         string memory _style,
@@ -64,8 +108,20 @@ library VectorGraphics {
         }
     }
 
-    function div() public pure returns (string memory) {
-        return "";
+    function svg(
+        string memory _params,
+        string memory _content
+    ) public pure returns (string memory) {
+        string memory image_ = string(
+            abi.encodePacked(
+                '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" ',
+                _params,
+                ">",
+                _content,
+                "</svg>"
+            )
+        );
+        return image_;
     }
 
     function h1() public pure returns (string memory) {
