@@ -52,7 +52,8 @@ library EthereumStyleSheets {
         string memory _title,
         string memory _style,
         string memory _code,
-        string memory _script
+        string memory _script,
+        string memory _config
     ) public pure returns (string memory) {
         string memory animation_ = string(
             abi.encodePacked(
@@ -62,6 +63,7 @@ library EthereumStyleSheets {
                 '<meta http-equiv="content-type" content="text/html; charset=UTF-8" />',
                 '<meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />',
                 '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+                _config,
                 "<style>",
                 _style,
                 "</style>",
@@ -90,6 +92,24 @@ library EthereumStyleSheets {
             abi.encodePacked("<style>", _style, "</style>")
         );
         return style_;
+    }
+
+    function linkStyleSheet(
+        string memory _href
+    ) public pure returns (string memory) {
+        string memory href_ = string(
+            abi.encodePacked('<link rel="stylesheet"', _href, " />")
+        );
+        return href_;
+    }
+
+    function linkScript(
+        string memory _src
+    ) public pure returns (string memory) {
+        string memory src_ = string(
+            abi.encodePacked('<script src="</script>', _src, '" </script>')
+        );
+        return src_;
     }
 
     function image(
