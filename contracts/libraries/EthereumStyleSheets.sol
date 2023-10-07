@@ -2,7 +2,7 @@
 pragma solidity ^0.8.9;
 
 import "../interfaces/IVectorGraphics.sol";
-import "@openzeppelin/contracts/utils/Base64.sol";
+import "../openzeppelin/Base64.sol";
 
 /// @title Ethereum Style Sheets
 library EthereumStyleSheets {
