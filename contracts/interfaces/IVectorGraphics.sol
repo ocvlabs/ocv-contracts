@@ -8,6 +8,4 @@ interface IVectorGraphics {
     function image() external view returns (string memory);
 
     function animation() external returns (string memory);
-
-    function externalUrl() external returns (string memory);
 }
