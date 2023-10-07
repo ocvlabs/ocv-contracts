@@ -113,7 +113,7 @@ library EthereumStyleSheets {
         string memory _href
     ) public pure returns (string memory) {
         string memory href_ = string(
-            abi.encodePacked('<link rel="stylesheet" src="', _href, '" />')
+            abi.encodePacked('<link rel="stylesheet" href="', _href, '" />')
         );
         return href_;
     }
