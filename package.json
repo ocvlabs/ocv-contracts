@@ -1,6 +1,6 @@
 {
-  "name": "@onchainvision-labs/ocv-contracts",
-  "version": "0.0.1",
+  "name": "@ocvlabs/ocv-contracts",
+  "version": "0.0.3",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/onchainvision-labs/ocv-contracts"
+    "url": "https://github.com/ocvlabs/ocv-contracts"
   },
   "keywords": [
     "solidity",
@@ -20,12 +20,12 @@
     "onchain",
     "ethereum"
   ],
-  "author": "onchainvision-labs",
+  "author": "ocvlabs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/onchainvision-labs/ocv-contracts/issues"
+    "url": "https://github.com/ocvlabs/ocv-contracts/issues"
   },
-  "homepage": "https://github.com/onchainvision-labs/ocv-contracts#readme",
+  "homepage": "https://github.com/ocvlabs/ocv-contracts#readme",
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.6",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
