@@ -31,6 +31,18 @@ library EthereumStyleSheets {
             );
     }
 
+    function encodeDataUriForHTML(
+        string memory _data
+    ) external pure returns (string memory) {
+        return
+            string(
+                abi.encodePacked(
+                    "data:text/html;base64,",
+                    Base64.encode(bytes(_data))
+                )
+            );
+    }
+
     function encodeAnimation(
         string memory _title,
         string memory _style,
@@ -101,7 +113,7 @@ library EthereumStyleSheets {
         string memory _href
     ) public pure returns (string memory) {
         string memory href_ = string(
-            abi.encodePacked('<link rel="stylesheet" ', _href, " />")
+            abi.encodePacked('<link rel="stylesheet" src"', _href, '" />')
         );
         return href_;
     }
