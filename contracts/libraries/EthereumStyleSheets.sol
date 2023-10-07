@@ -101,7 +101,7 @@ library EthereumStyleSheets {
         string memory _href
     ) public pure returns (string memory) {
         string memory href_ = string(
-            abi.encodePacked('<link rel="stylesheet"', _href, " />")
+            abi.encodePacked('<link rel="stylesheet" ', _href, " />")
         );
         return href_;
     }
@@ -110,7 +110,7 @@ library EthereumStyleSheets {
         string memory _src
     ) public pure returns (string memory) {
         string memory src_ = string(
-            abi.encodePacked('<script src="</script>', _src, '"></script>')
+            abi.encodePacked('<script src="', _src, '"></script>')
         );
         return src_;
     }
