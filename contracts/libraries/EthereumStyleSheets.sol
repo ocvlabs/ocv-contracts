@@ -35,14 +35,17 @@ library EthereumStyleSheets {
         string memory _title,
         string memory _style,
         string memory _code,
-        string memory _script
+        string memory _script,
+        string memory _config
     ) external pure returns (string memory) {
         return
             string(
                 abi.encodePacked(
                     "data:text/html;base64,",
                     Base64.encode(
-                        bytes(animation(_title, _style, _code, _script))
+                        bytes(
+                            animation(_title, _config, _style, _code, _script)
+                        )
                     )
                 )
             );
@@ -50,10 +53,10 @@ library EthereumStyleSheets {
 
     function animation(
         string memory _title,
+        string memory _config,
         string memory _style,
         string memory _code,
-        string memory _script,
-        string memory _config
+        string memory _script
     ) public pure returns (string memory) {
         string memory animation_ = string(
             abi.encodePacked(
