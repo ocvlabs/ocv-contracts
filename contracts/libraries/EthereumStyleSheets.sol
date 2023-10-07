@@ -20,13 +20,13 @@ library EthereumStyleSheets {
     }
 
     function encodeJson(
-        string memory data
+        bytes memory data
     ) external pure returns (string memory) {
         return
             string(
                 abi.encodePacked(
                     "data:application/json;base64,",
-                    Base64.encode(bytes(data))
+                    Base64.encode(data)
                 )
             );
     }
