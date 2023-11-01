@@ -167,14 +167,13 @@ library ESS {
     }
 
     function encodeSvgAsBase64(
-        string memory _params,
         string memory _content
     ) external pure returns (string memory) {
         return
             string(
                 abi.encodePacked(
                     "data:image/svg+xml;base64,",
-                    encode(bytes(svg(_params, _content)))
+                    encode(bytes(_content))
                 )
             );
     }
