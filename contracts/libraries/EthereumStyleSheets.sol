@@ -79,9 +79,9 @@ library EthereumStyleSheets {
         string memory animation_ = string(
             abi.encodePacked(
                 "<!DOCTYPE html> <html lang=en> ",
-                "<head><title>",
+                "<head> <title>",
                 _title,
-                '<meta http-equiv=content-type content="text/html; charset=UTF-8"> <meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge"> <meta name=viewport content="width=device-width,initial-scale=1">',
+                '</title> <meta http-equiv=content-type content="text/html; charset=UTF-8"> <meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge"> <meta name=viewport content="width=device-width,initial-scale=1">',
                 "<style>",
                 _style,
                 "</style>",
@@ -163,5 +163,34 @@ library EthereumStyleSheets {
             )
         );
         return image_;
+    }
+
+    function encodeInteractives(
+        string memory _style,
+        string memory _markup,
+        string memory _script,
+        string memory _setting
+    ) public pure returns (string memory) {
+        string memory animation_ = string(
+            abi.encodePacked(
+                '<!DOCTYPE html> <html lang=en> <head> <meta charset=UTF-8> <meta name=viewport content="width=device-width,initial-scale=1"> <style> ',
+                _style,
+                " </style> </head> <body> ",
+                _markup,
+                " ",
+                _setting,
+                " <script type=module> ",
+                _script,
+                " </script> </body> </html>"
+            )
+        );
+
+        return
+            string(
+                abi.encodePacked(
+                    "data:text/html;base64,",
+                    Base64.encode(bytes(animation_))
+                )
+            );
     }
 }
