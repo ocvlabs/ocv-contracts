@@ -6,7 +6,7 @@ import "../openzeppelin/Base64.sol";
 
 /// @title Ethereum Style Sheets
 library EthereumStyleSheets {
-    function encodeSvg(
+    function encodeSvgAsBase64(
         string memory _params,
         string memory _content
     ) external pure returns (string memory) {
@@ -19,7 +19,7 @@ library EthereumStyleSheets {
             );
     }
 
-    function encodeJson(
+    function encodeJsonAsBase64(
         bytes memory data
     ) external pure returns (string memory) {
         return
@@ -31,7 +31,7 @@ library EthereumStyleSheets {
             );
     }
 
-    function encodeDataUriForHTML(
+    function encodeHtmlAsBase64(
         string memory _data
     ) external pure returns (string memory) {
         return
@@ -46,9 +46,9 @@ library EthereumStyleSheets {
     function encodeAnimation(
         string memory _title,
         string memory _style,
-        string memory _code,
-        string memory _script,
-        string memory _config
+        string memory _markup,
+        string memory _setting,
+        string memory _script
     ) external pure returns (string memory) {
         return
             string(
@@ -56,7 +56,13 @@ library EthereumStyleSheets {
                     "data:text/html;base64,",
                     Base64.encode(
                         bytes(
-                            animation(_title, _config, _style, _code, _script)
+                            animation(
+                                _title,
+                                _style,
+                                _markup,
+                                _setting,
+                                _script
+                            )
                         )
                     )
                 )
@@ -65,39 +71,39 @@ library EthereumStyleSheets {
 
     function animation(
         string memory _title,
-        string memory _config,
         string memory _style,
-        string memory _code,
+        string memory _markup,
+        string memory _setting,
         string memory _script
     ) public pure returns (string memory) {
         string memory animation_ = string(
             abi.encodePacked(
-                "<!DOCTYPE html><html>",
+                "<!DOCTYPE html> <html lang=en> ",
                 "<head><title>",
                 _title,
-                '</title><meta http-equiv="content-type" content="text/html; charset=UTF-8" />',
-                '<meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />',
-                '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
-                _config,
+                '<meta http-equiv=content-type content="text/html; charset=UTF-8"> <meta charset=UTF-8><meta http-equiv=X-UA-Compatible content="IE=edge"> <meta name=viewport content="width=device-width,initial-scale=1">',
                 "<style>",
                 _style,
                 "</style>",
                 "</head>",
                 "<body>",
-                _code,
-                "<script>",
+                _markup,
+                " ",
+                _setting,
+                " <script type=module> ",
                 _script,
-                "</script>",
-                "</body>",
-                "</html>"
+                " </script> </body> </html>"
             )
         );
         return animation_;
     }
 
-    function script(string memory _script) public pure returns (string memory) {
+    function script(
+        string memory _script,
+        string memory _src
+    ) public pure returns (string memory) {
         string memory script_ = string(
-            abi.encodePacked("<script>", _script, "</script>")
+            abi.encodePacked('<script src="', _src, '">', _script, "</script>")
         );
         return script_;
     }
@@ -157,33 +163,5 @@ library EthereumStyleSheets {
             )
         );
         return image_;
-    }
-
-    function h1() public pure returns (string memory) {
-        return "";
-    }
-
-    function h2() public pure returns (string memory) {
-        return "";
-    }
-
-    function h3() public pure returns (string memory) {
-        return "";
-    }
-
-    function h4() public pure returns (string memory) {
-        return "";
-    }
-
-    function h5() public pure returns (string memory) {
-        return "";
-    }
-
-    function p() public pure returns (string memory) {
-        return "";
-    }
-
-    function a() public pure returns (string memory) {
-        return "";
     }
 }
