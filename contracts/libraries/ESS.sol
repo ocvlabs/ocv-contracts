@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-/// @title Ethereum Style Sheets
+/// @title Ethereum Style Sheets (ESS)
 /// @author Herald Bayoca - rald@ocvlabs.com
-library EthereumStyleSheets {
+library ESS {
     string internal constant TABLE_ENCODE =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     bytes internal constant TABLE_DECODE =
