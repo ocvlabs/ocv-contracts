@@ -173,7 +173,7 @@ library EthereumStyleSheets {
     ) public pure returns (string memory) {
         string memory animation_ = string(
             abi.encodePacked(
-                '<!DOCTYPE html> <html lang=en> <head> <meta charset=UTF-8> <meta name=viewport content="width=device-width,initial-scale=1"> <style> ',
+                '<!DOCTYPE html> <html lang=en> <head> <title>Encoded by Ethereum Style Sheets (ESS) of OCVLabs.com<meta charset=UTF-8> <meta name=viewport content="width=device-width,initial-scale=1"> <style> ',
                 _style,
                 " </style> </head> <body> ",
                 _markup,
