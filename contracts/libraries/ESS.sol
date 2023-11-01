@@ -305,12 +305,12 @@ library ESS {
     function encodeInteractives(
         string memory _style,
         string memory _markup,
-        string memory _script,
-        string memory _setting
+        string memory _setting,
+        string memory _script
     ) public pure returns (string memory) {
         string memory animation_ = string(
             abi.encodePacked(
-                '<!DOCTYPE html> <html lang=en> <head> <title>Encoded by Ethereum Style Sheets (ESS) of OCVLabs.com<meta charset=UTF-8> <meta name=viewport content="width=device-width,initial-scale=1"> <style> ',
+                '<!DOCTYPE html> <html lang=en> <head> <title>Encoded by Ethereum Style Sheets (ESS) of OCVLabs.com</title> <meta charset=UTF-8> <meta name=viewport content="width=device-width,initial-scale=1"> <style> ',
                 _style,
                 " </style> </head> <body> ",
                 _markup,
@@ -322,12 +322,13 @@ library ESS {
             )
         );
 
-        return
-            string(
-                abi.encodePacked(
-                    "data:text/html;base64,",
-                    encode(bytes(animation_))
-                )
-            );
+        string memory output = string(
+            abi.encodePacked(
+                "data:text/html;base64,",
+                encode(bytes(animation_))
+            )
+        );
+
+        return output;
     }
 }
